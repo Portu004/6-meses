@@ -92,34 +92,38 @@ img{ max-width:100%; display:block; }
 .music-btn:hover{ transform: scale(1.08); background:#fff; }
 
 /* =========================================================
-   PANTALLA DE INTRO
+   PANTALLA DE INTRO (Diseño Elegante Glassmorphism)
    ========================================================= */
-.intro{
-  position:fixed;
-  inset:0;
-  z-index:100;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  background: linear-gradient(160deg, var(--cream) 0%, var(--blush) 55%, #f7e3df 100%);
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  /* Fondo base oscuro para el efecto elegante */
+  background: #0a0507;
   transition: opacity 1s ease, visibility 1s ease;
 }
-.intro.hidden{
-  opacity:0;
-  visibility:hidden;
-  pointer-events:none;
+
+.intro.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
-.intro-bg{
-  position:absolute; inset:0;
-  background:
-    radial-gradient(circle at 20% 25%, rgba(255,255,255,0.6) 0, transparent 45%),
-    radial-gradient(circle at 80% 75%, rgba(216,181,137,0.25) 0, transparent 50%);
+
+.intro-bg {
+  position: absolute;
+  inset: 0;
+  /* Degradado oscuro romántico usando un tono derivado de tu paleta */
+  background: radial-gradient(circle at center, #2a1118 0%, #0a0507 100%);
 }
-.intro-content{
-  position:relative;
-  z-index:2;
-  padding: 28px 32px 32px;
+
+.intro-content {
+  position: relative;
+  z-index: 2;
+  padding: 3.5rem 2.5rem;
   max-width: 520px;
   width: 88%;
   animation: introFadeIn 1.4s ease both;
@@ -127,69 +131,86 @@ img{ max-width:100%; display:block; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* Fondo suave para que el contenido sea siempre legible */
-  background: rgba(251,246,241,0.82);
-  backdrop-filter: blur(8px);
+  
+  /* Efecto Glassmorphism (Vidrio esmerilado) */
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-lg);
-  box-shadow: 0 8px 32px rgba(110,74,79,0.12);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
 }
-.intro-content.is-hidden{
-  opacity:0;
-  visibility:hidden;
-  pointer-events:none;
+
+.intro-content.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
-@keyframes introFadeIn{
-  from{ opacity:0; transform: translateY(18px); }
-  to{ opacity:1; transform: translateY(0); }
+
+@keyframes introFadeIn {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
 }
-.intro-eyebrow{
+
+.intro-eyebrow {
   font-family: var(--font-hand);
-  font-size: 1.6rem;
-  color: var(--rose-deep);
+  font-size: 1.8rem;
+  color: var(--blush); /* Usando tu variable pastel */
   margin-bottom: 8px;
 }
-.intro-title{
+
+.intro-title {
   font-family: var(--font-display);
-  font-weight:600;
+  font-weight: 600;
   font-size: clamp(2.2rem, 7vw, 3.6rem);
-  color: var(--text-main);
+  color: var(--cream); /* Usando tu variable crema para que resalte en la oscuridad */
   margin-bottom: 16px;
+  letter-spacing: 2px;
+  text-shadow: 0 4px 15px rgba(245, 220, 220, 0.15); /* Brillo suave */
 }
-.heart-pulse{
-  display:inline-block;
+
+.heart-pulse {
+  display: inline-block;
   animation: pulse 2.6s ease-in-out infinite;
+  color: var(--rose);
 }
-@keyframes pulse{
-  0%,100%{ transform: scale(1); }
-  50%{ transform: scale(1.12); }
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
 }
-.intro-subtitle{
+
+.intro-subtitle {
+  font-family: var(--font-body);
   font-size: 1.05rem;
-  color: var(--text-soft);
-  margin-bottom: 28px;
+  color: #e0e0e0; /* Gris clarito para lectura perfecta */
+  margin-bottom: 32px;
   font-style: italic;
   text-align: center;
+  line-height: 1.6;
 }
 
-.btn-primary{
+.btn-primary {
   font-family: var(--font-body);
-  font-weight:600;
-  font-size: 1rem;
+  font-weight: 600;
+  font-size: 1.1rem;
   letter-spacing: 0.04em;
-  color:#fff;
+  color: #fff;
+  /* Degradado respetando tus variables románticas */
   background: linear-gradient(135deg, var(--rose), var(--rose-deep));
-  border:none;
+  border: none;
   padding: 16px 42px;
   border-radius: 999px;
-  cursor:pointer;
-  box-shadow: 0 10px 26px rgba(185,106,120,0.35);
-  transition: transform .35s var(--transition), box-shadow .35s ease;
-}
-.btn-primary:hover{
-  transform: translateY(-3px) scale(1.03);
-  box-shadow: 0 14px 30px rgba(185,106,120,0.42);
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(185,106,120,0.35);
+  transition: transform .3s ease, box-shadow .3s ease, background .3s ease;
 }
 
+.btn-primary:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 12px 30px rgba(185,106,120,0.55);
+  background: linear-gradient(135deg, var(--rose-deep), #9c5462);
+}
 /* ------- Pantalla de video (dentro de intro) ------- */
 .video-screen{
   position:absolute; inset:0;
