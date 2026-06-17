@@ -21,7 +21,6 @@ for(let i=0;i<5;i++) setTimeout(spawnHeart, i*400); // algunos al cargar
 
 /* =========================================================
    2. CONTADOR DE DÍAS JUNTOS
-   ✏️ EDITAR: cambiar la fecha si hace falta (formato YYYY-MM-DD)
    ========================================================= */
 const startDate = new Date('2025-12-18T00:00:00');
 
@@ -38,7 +37,7 @@ setInterval(updateDayCounter, 1000 * 60 * 60);
 
 
 /* =========================================================
-   3. PANTALLA DE INTRO + VIDEO
+   3. PANTALLA DE INTRO + VIDEO (Adaptado para iOS)
    ========================================================= */
 const intro       = document.getElementById('intro');
 const startBtn    = document.getElementById('startBtn');
@@ -48,33 +47,46 @@ const videoFallback = document.getElementById('videoFallback');
 const skipBtn     = document.getElementById('skipBtn');
 const bgMusic     = document.getElementById('bgMusic');
 
-startBtn.addEventListener('click', () => {
-  // Ocultar el recuadro "Para Delfi" para que no tape el video
+let experienciaIniciada = false;
+
+function iniciarExperiencia(e) {
+  // Prevenir el comportamiento por defecto en táctiles para evitar "ghost clicks"
+  if (e.type === 'touchstart') e.preventDefault();
+  
+  // Evitar que se ejecute dos veces si el celular dispara touch y click a la vez
+  if (experienciaIniciada) return;
+  experienciaIniciada = true;
+
+  // Ocultar el recuadro para que no tape el video
   document.getElementById('introContent').classList.add('is-hidden');
 
   videoScreen.classList.add('active');
-  // Intenta reproducir el video. Si no existe / falla, muestra el fallback animado.
+  
+  // Intenta reproducir el video.
   introVideo.play().then(() => {
     videoFallback.style.display = 'none';
   }).catch(() => {
     videoFallback.style.display = 'flex';
   });
 
-  // Si el video no tiene fuente válida, también mostramos el fallback
   introVideo.addEventListener('error', () => {
     videoFallback.style.display = 'flex';
   });
 
-  // Intentar arrancar la música de fondo (puede ser bloqueado por el navegador
-  // hasta que haya una interacción del usuario; este click cuenta como una)
-  bgMusic.volume = 0.4;
+  // Iniciar la música de forma directa para sortear el bloqueo de iOS
+  bgMusic.volume = 0.4; // Funciona en PC, iOS lo ignora
   bgMusic.play().then(() => {
     setMusicIcon(true);
-  }).catch(() => { /* el usuario podrá darle play manualmente */ });
+  }).catch(() => { 
+    /* el usuario podrá darle play manualmente si falla */ 
+  });
 
-  // Cuando el video termina, pasamos al álbum automáticamente
   introVideo.addEventListener('ended', goToAlbum);
-});
+}
+
+// Escuchamos ambos eventos para máxima compatibilidad
+startBtn.addEventListener('click', iniciarExperiencia);
+startBtn.addEventListener('touchstart', iniciarExperiencia, { passive: false });
 
 skipBtn.addEventListener('click', goToAlbum);
 
@@ -89,8 +101,7 @@ document.body.style.overflow = 'hidden';
 
 
 /* =========================================================
-   4. BOTÓN DE MÚSICA
-   ✏️ EDITAR: reemplazar assets/audio/musica.mp3 por la canción elegida
+  4. BOTÓN DE MÚSICA (Adaptado para iOS)
    ========================================================= */
 const musicToggle = document.getElementById('musicToggle');
 const iconNote  = document.getElementById('iconNote');
@@ -101,14 +112,19 @@ function setMusicIcon(isPlaying){
   iconPause.style.display = isPlaying ? 'block' : 'none';
 }
 
-musicToggle.addEventListener('click', () => {
+function toggleMusic(e) {
+  if (e.type === 'touchstart') e.preventDefault();
+
   if(bgMusic.paused){
     bgMusic.play().then(() => setMusicIcon(true)).catch(()=>{});
   } else {
     bgMusic.pause();
     setMusicIcon(false);
   }
-});
+}
+
+musicToggle.addEventListener('click', toggleMusic);
+musicToggle.addEventListener('touchstart', toggleMusic, { passive: false });
 
 
 /* =========================================================
