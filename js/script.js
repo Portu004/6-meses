@@ -21,7 +21,6 @@ for(let i=0;i<5;i++) setTimeout(spawnHeart, i*400); // algunos al cargar
 
 /* =========================================================
    2. CONTADOR DE DÍAS JUNTOS
-   ✏️ EDITAR: cambiar la fecha si hace falta (formato YYYY-MM-DD)
    ========================================================= */
 const startDate = new Date('2025-12-18T00:00:00');
 
@@ -89,8 +88,8 @@ document.body.style.overflow = 'hidden';
 
 
 /* =========================================================
-   4. BOTÓN DE MÚSICA
-   ✏️ EDITAR: reemplazar assets/audio/musica.mp3 por la canción elegida
+  4. BOTÓN DE MÚSICA
+  
    ========================================================= */
 const musicToggle = document.getElementById('musicToggle');
 const iconNote  = document.getElementById('iconNote');
