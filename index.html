@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6 meses con Delfi ❤️</title>
+
+<!-- Tipografías: Playfair Display (títulos elegantes), Quicksand (texto), Caveat (notas manuscritas) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,500&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ===================================================== -->
+<!-- CAPA DE CORAZONES FLOTANTES (generados por JS) -->
+<!-- ===================================================== -->
+<div class="hearts-layer" id="heartsLayer" aria-hidden="true"></div>
+
+<!-- ===================================================== -->
+<!-- BOTÓN DE MÚSICA FLOTANTE -->
+<!-- ===================================================== -->
+<audio id="bgMusic" loop>
+  <source src="assets/audio/pp.mp3" type="audio/mpeg">
+</audio>
+<button id="musicToggle" class="music-btn" aria-label="Reproducir música">
+  <svg id="iconNote" viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M9 17V5l11-2v12M9 17a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm11-4a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" stroke="currentColor" stroke-width="1.4" fill="none"/></svg>
+  <svg id="iconPause" viewBox="0 0 24 24" width="20" height="20" style="display:none"><path fill="currentColor" d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+</button>
+
+<!-- ===================================================== -->
+<!-- PANTALLA DE BIENVENIDA / INTRO -->
+<!-- ===================================================== -->
+<section id="intro" class="intro">
+  <div class="intro-bg"></div>
+  <div class="intro-content" id="introContent">
+    <p class="intro-eyebrow">Para Delfi</p>
+    <!-- <h1 class="intro-title">6 meses juntos <span class="heart-pulse">❤️</span></h1> -->
+    <p class="intro-subtitle">Un pequeño viaje por nuestros recuerdos más lindos.</p>
+    <button id="startBtn" class="btn-primary">Comenzar</button>
+  </div>
+
+  <!-- Pantalla de video romántico (aparece al apretar "Comenzar") -->
+  <!-- Reemplazá assets/video/intro.mp4 por su video. Si no hay video, se muestra una animación alternativa -->
+  <div id="videoScreen" class="video-screen">
+    <video class="video-bg-blur" id="introVideoBg" muted loop playsinline aria-hidden="true">
+      <source src="assets/video/intro.mp4" type="video/mp4">
+    </video>
+    <video id="introVideo" playsinline>
+      <source src="assets/video/intro.mp4" type="video/mp4">
+    </video>
+    <div id="videoFallback" class="video-fallback">
+      <div class="fallback-heart">❤️</div>
+      <p class="fallback-text">18 / 12 / 2025</p>
+      <p class="fallback-text-small">El día que empezó todo</p>
+    </div>
+    <button id="skipBtn" class="btn-skip">Continuar →</button>
+  </div>
+</section>
+
+<!-- ===================================================== -->
+<!-- PUNTOS DE NAVEGACIÓN LATERAL -->
+<!-- ===================================================== -->
+<nav class="dots-nav" id="dotsNav" aria-label="Navegación de capítulos">
+  <a href="#cover" class="dot" data-label="Inicio"></a>
+  <a href="#cap1" class="dot" data-label="Cómo empezó"></a>
+  <a href="#cap2" class="dot" data-label="Primeras salidas"></a>
+  <a href="#cap3" class="dot" data-label="Momentos"></a>
+  <a href="#cap4" class="dot" data-label="Por qué te amo"></a>
+  <a href="#cap365" class="dot" data-label="365 cosas"></a>
+  <a href="#cap5" class="dot" data-label="Línea de tiempo"></a>
+  <a href="#cap6" class="dot" data-label="Lo que viene"></a>
+  <a href="#final" class="dot" data-label="Final"></a>
+</nav>
+
+<!-- ===================================================== -->
+<!-- LIBRO PRINCIPAL -->
+<!-- ===================================================== -->
+<main id="book" class="book">
+
+  <!-- ---------- PORTADA / CONTADOR ---------- -->
+  <section id="cover" class="page page-cover">
+    <div class="page-inner">
+      <p class="page-eyebrow">Nuestra historia</p>
+      <h2 class="page-title">Seis meses, infinitos momentos</h2>
+      <p class="page-text">Desde el 18 de diciembre de 2025 hasta hoy, cada día sumó algo nuevo a nuestra historia. Esta página es un pequeño regalo: un álbum para recorrer juntos, las veces que quieras.</p>
+
+      <!-- Contador de días automático -->
+      <div class="counter-box">
+        <span id="dayCounter" class="counter-number">0</span>
+        <span class="counter-label">días juntos</span>
+      </div>
+
+      <a href="#cap1" class="scroll-hint">Empezar a leer ↓</a>
+    </div>
+  </section>
+
+  <!-- ---------- CAPÍTULO 1: CÓMO EMPEZÓ TODO ---------- -->
+  <section id="cap1" class="page page-chapter">
+    <div class="page-inner two-col">
+      <div class="col-text reveal">
+        <span class="chapter-number">Capítulo 01</span>
+        <h2 class="page-title">Cómo empezó todo</h2>
+        <!-- ✏️ EDITAR: contá acá la historia de cómo se conocieron -->
+        <p class="page-text">
+          Todo empezó como esas historias que parecen casualidad, pero que después uno entiende que eran destino.
+          Una conversación cualquiera, una sonrisa que se quedó dando vueltas, y de repente las ganas de hablar
+          todos los días. Así, sin darnos cuenta, empezamos a construir algo hermoso.
+        </p>
+        <p class="page-text">
+          El 18 de diciembre de 2025 decidimos que queríamos intentarlo, y desde ese día no paramos de sumar
+          recuerdos. Esta es la primera página de muchas que vamos a escribir juntos.
+        </p>
+      </div>
+      <div class="col-media reveal">
+        <!-- ✏️ EDITAR: reemplazar por una foto de los dos -->
+        <img class="photo-frame" src="assets/images/img22.jpeg" alt="Cómo empezamos" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- CAPÍTULO 2: PRIMERAS SALIDAS ---------- -->
+  <section id="cap2" class="page page-chapter alt">
+    <div class="page-inner">
+      <span class="chapter-number">Capítulo 02</span>
+      <h2 class="page-title">Nuestras primeras salidas</h2>
+      <p class="page-text intro-paragraph">
+        Cada salida fue una pieza de nuestro rompecabezas para conocernos un poco más. Acá van algunos de esos primeros momentos
+        que ya se sienten como recuerdos.
+      </p>
+
+      <!-- ✏️ EDITAR: agregar/quitar tarjetas, cambiar fotos y textos -->
+      <div class="cards-grid">
+        <article class="memory-card reveal">
+          <img src="assets/images/img8.jpeg" alt="Primera foto" loading="lazy">
+          <div class="memory-card-text">
+            <h3>Una de nuestras primeras fotos</h3>
+            <p>Ese dia se nos pasó el tiempo volando pero fue algo hermoso.</p>
+          </div>
+        </article>
+        <article class="memory-card reveal">
+          <img src="assets/images/img17.jpeg" alt="Paseo" loading="lazy">
+          <div class="memory-card-text">
+            <h3>Paseo por Palermo</h3>
+            <p>Un plan muy lindo donde pasamos todo un dia juntos.</p>
+          </div>
+        </article>
+        <article class="memory-card reveal">
+          <img src="assets/images/img15.jpeg" alt="Paseo" loading="lazy">
+          <div class="memory-card-text">
+            <h3>14 de febrero</h3>
+            <p>Comimos unas hamburguesitas y paseamos por puerto madero.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- CAPÍTULO 3: MOMENTOS ESPECIALES (POLAROIDS) ---------- -->
+  <section id="cap3" class="page page-chapter">
+    <div class="page-inner">
+      <span class="chapter-number">Capítulo 03</span>
+      <h2 class="page-title">Momentos especiales</h2>
+      <p class="page-text intro-paragraph">
+        Tocá cualquier foto para verla más grande. Algunos instantes merecen quedarse un poco más de tiempo en pantalla.
+      </p>
+
+      <!-- ✏️ EDITAR: reemplazar imágenes por las fotos favoritas de ustedes -->
+      <div class="polaroid-grid">
+        <figure class="polaroid reveal" data-rotate="-4">
+          <img src="assets/images/img3.jpeg" alt="Momento especial 1" loading="lazy">
+          <figcaption>Ese día ❤️</figcaption>
+        </figure>
+        <figure class="polaroid reveal" data-rotate="3">
+          <img src="assets/images/img10.jpeg" alt="Momento especial 2" loading="lazy">
+          <figcaption>Te amo</figcaption>
+        </figure>
+        <figure class="polaroid reveal" data-rotate="-2">
+          <img src="assets/images/img30.jpeg" alt="Momento especial 3" loading="lazy">
+          <figcaption>5 meses</figcaption>
+        </figure>
+        <figure class="polaroid reveal" data-rotate="5">
+          <img src="assets/images/img24.jpeg" alt="Momento especial 4" loading="lazy">
+          <figcaption>Barrio chino</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- CAPÍTULO 4: COSAS QUE AMO DE VOS ---------- -->
+  <section id="cap4" class="page page-chapter alt">
+    <div class="page-inner">
+      <span class="chapter-number">Capítulo 04</span>
+      <h2 class="page-title">Cosas que amo de vos</h2>
+      <p class="page-text intro-paragraph">
+        Una lista corta para algo tan grande. Cada vez que pienso en una razón, aparecen tres más.
+      </p>
+
+      <!-- ✏️ EDITAR: agregar, quitar o cambiar las razones. Aparecen una por una al hacer scroll -->
+      <ul class="reasons-list">
+        <li class="reason reveal">Tu forma de ser conmigo.</li>
+        <li class="reason reveal">Lo bien que me hacés sentir con solo un mensaje tuyo.</li>
+        <li class="reason reveal">Tu paciencia infinita, hasta en mis días difíciles.</li>
+        <li class="reason reveal">La forma en que me mirás cuando creés que no me doy cuenta.</li>
+        <li class="reason reveal">Tus ganas de cuidar a las personas que querés.</li>
+        <li class="reason reveal">Que con vos todo se siente más simple.</li>
+        <li class="reason reveal">Tu sencilles y tu amor por mi.</li>
+        <li class="reason reveal">Que sos vos, tal cual sos, sin pretender ser otra cosa.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ---------- 365 COSAS QUE VOLVERÍA A ELEGIR DE VOS ---------- -->
+  <section id="cap365" class="page page-chapter notes-page">
+    <div class="page-inner">
+      <span class="chapter-number">Edición especial</span>
+      <h2 class="page-title">365 cosas que volvería a elegir de vos</h2>
+      <p class="page-text intro-paragraph">
+        Todavía no llegamos a 365 (¡vamos a tener toda la vida para completarlas!), pero acá van las primeras 181, que son los dias que estamos de novios.
+      </p>
+
+      <div class="notes-progress">
+        <span id="notesCount">0</span> / 365 — y sumando
+      </div>
+
+      <!-- ✏️ EDITAR: agregá tantas notas como quieras, cada <li> es una "tarjetita" -->
+      <ul class="notes-grid" id="notesGrid">
+        <li class="note">1. Tu forma de mandarme buenos días aunque sea con sueño.</li>
+        <li class="note">2. Que te acuerdes de detalles que yo ni me acordaba haber dicho.</li>
+        <li class="note">3. Cómo me hacés reír hasta en los peores días.</li>
+        <li class="note">4. Tu manera de abrazar, como si el tiempo se detuviera.</li>
+        <li class="note">5. Que seas vos quien me elige también, todos los días.</li>
+        <li class="note">6. Tu mirada cuando estás concentrada en algo que te gusta.</li>
+        <li class="note">7. Lo fácil que es hablar con vos de cualquier cosa.</li>
+        <li class="note">8. Que celebres mis logros como si fueran tuyos.</li>
+        <li class="note">9. Tu paciencia para escucharme, aunque repita la misma historia.</li>
+        <li class="note">10. Que con vos cualquier plan se convierte en mi favorito.</li>
+        <li class="note">11. Tu risa, que es de mis sonidos favoritos.</li>
+        <li class="note">12. Cómo me cuidás sin que yo te lo pida.</li>
+        <li class="note">13. Los espacios que nos hacemos en el dia para vernos un ratito aunque sea</li>
+        <li class="note">14. Tu personalidad que para mi es perfecta</li>
+        <li class="note">15. La forma en que me escuchás hablar de código y programación aunque a veces te maree.</li>
+        <li class="note">16. Que me apoyes en cada proyecto y locura nueva que quiero empezar.</li>
+        <li class="note">17. Compartir unas buenas empanadas o una pizza un fin de semana con vos.</li>
+        <li class="note">18. Tu voz cuando me mandás un audio contándome algo que te emocionó.</li>
+        <li class="note">19. Cómo me tranquilizás cuando estoy estresado o con la cabeza a mil.</li>
+        <li class="note">20. Esa manía tuya tan linda de acomodarte el pelo.</li>
+        <li class="note">21. Lo tierna que te ves cuando estás medio dormida.</li>
+        <li class="note">22. Tus mensajes de la nada diciendo que me extrañás.</li>
+        <li class="note">23. La confianza que nos tenemos para contarnos todo.</li>
+        <li class="note">24. Que siempre sabés qué decir para hacerme sentir mejor.</li>
+        <li class="note">25. Cómo nuestras manos encajan perfecto cuando caminamos juntos.</li>
+        <li class="note">26. El perfume que dejás en mi ropa después de abrazarnos.</li>
+        <li class="note">27. Que me hagas sentir que soy suficiente, tal cual soy.</li>
+        <li class="note">28. Tus "te amo" en los momentos más inesperados.</li>
+        <li class="note">29. Lo mucho que me divierto con vos, hasta yendo a comprar al súper.</li>
+        <li class="note">30. La cara que ponés cuando probás una comida que te gusta mucho.</li>
+        <li class="note">31. Que me enseñes a ver el lado bueno de las cosas.</li>
+        <li class="note">32. La manera en que me mirás fijo cuando estamos en silencio.</li>
+        <li class="note">33. Tus enojos chiquitos que te hacen ver todavía más linda.</li>
+        <li class="note">34. Cómo me hacés sentir que en tus brazos estoy en casa.</li>
+        <li class="note">35. Que siempre busques la forma de vernos, aunque sea un ratito.</li>
+        <li class="note">36. Lo linda que te ves cuando te reís a carcajadas.</li>
+        <li class="note">37. La paciencia inmensa que me tenés.</li>
+        <li class="note">38. Que te preocupes por cómo me fue en el día.</li>
+        <li class="note">39. Cómo iluminás cualquier lugar al que entrás.</li>
+        <li class="note">40. Tus locuras inesperadas que me alegran el dia</li>
+        <li class="note">41. La forma en que me das la mano en el auto.</li>
+        <li class="note">42. Que seas mi mejor amiga además de mi novia.</li>
+        <li class="note">43. Los memes o videos que me mandás porque te hicieron acordar a mí.</li>
+        <li class="note">44. Esa sonrisa tuya que me cambia el humor automáticamente.</li>
+        <li class="note">45. La emoción que le ponés a las cosas simples de la vida.</li>
+        <li class="note">46. Que seas mi refugio seguro cuando todo va mal.</li>
+        <li class="note">47. Lo hermoso que es despertar y ver un mensaje tuyo.</li>
+        <li class="note">48. Tus besos en la frente o en el cachete de la nada.</li>
+        <li class="note">49. La intencion que tenes por incluirme en todos tus planes</li>
+        <li class="note">50. Que me hagas querer ser una mejor versión de mí mismo.</li>
+        <li class="note">51. La forma en la que pronunciás mi nombre.</li>
+        <li class="note">52. Que conozcas mis gustos casi mejor que yo mismo.</li>
+        <li class="note">53. Las charlas profundas a la madrugada.</li>
+        <li class="note">54. Que compartamos el mismo sentido del humor.</li>
+        <li class="note">55. Cómo te brillan los ojos cuando hablás de lo que te apasiona.</li>
+        <li class="note">56. Que me des mi espacio pero siempre me hagas saber que estás ahí.</li>
+        <li class="note">57. La suavidad de tus manos cuando acaricias mi cara.</li>
+        <li class="note">58. Que confíes en mí con los ojos cerrados.</li>
+        <li class="note">59. Lo mucho que me cuidás cuando me siento mal.</li>
+        <li class="note">60. Que seas la primera persona a la que le quiero contar todo.</li>
+        <li class="note">61. La energía hermosa que contagiás a los que te rodean.</li>
+        <li class="note">62. Cómo me mimás sin ninguna excusa.</li>
+        <li class="note">63. Tus reacciones cuando te hago un chiste malo.</li>
+        <li class="note">64. Que siempre estás dispuesta a escucharme quejarme del mundo.</li>
+        <li class="note">65. La forma en que te emocionás con regalos chiquitos o detalles.</li>
+        <li class="note">66. Que me dejes ser yo mismo, al 100%, sin filtros.</li>
+        <li class="note">67. Lo orgulloso que me pone decir que sos mi novia.</li>
+        <li class="note">68. Que me preguntes si llegué bien a casa.</li>
+        <li class="note">69. Tus bostezos y esa carita de cansada que me da ternura.</li>
+        <li class="note">70. Cómo me extrañás, incluso si nos vimos ayer.</li>
+        <li class="note">71. Que seas tan atenta con las cosas que son importantes para mí.</li>
+        <li class="note">72. La paz que me transmite estar acostado al lado tuyo.</li>
+        <li class="note">73. Que siempre intentes sacarme una sonrisa, cueste lo que cueste.</li>
+        <li class="note">74. El sonido de tu respiración cuando te quedás dormida.</li>
+        <li class="note">75. Que me motives a no rendirme en mis estudios.</li>
+        <li class="note">76. La forma en que jugás con mis manos cuando estamos distraídos.</li>
+        <li class="note">77. Que seas mi cómplice en cada aventura.</li>
+        <li class="note">78. Lo detallista que sos conmigo.</li>
+        <li class="note">79. Cómo me mirás de reojo cuando creés que no me doy cuenta.</li>
+        <li class="note">80. Que seas el motivo principal de mi felicidad.</li>
+        <li class="note">81. Tus audios largos contándome tu día con lujo de detalles.</li>
+        <li class="note">82. La manera en que me abrazás fuerte antes de despedirnos.</li>
+        <li class="note">83. Que me banques con mis horarios raros o cuando estoy a full estudiando.</li>
+        <li class="note">84. Que tengamos nuestra propia forma de comunicarnos con miradas.</li>
+        <li class="note">85. Cómo te preocupás por mi familia y por mi gente.</li>
+        <li class="note">86. La inteligencia que tenés y cómo admiro tu forma de pensar.</li>
+        <li class="note">87. Que nunca dejes de sorprenderme.</li>
+        <li class="note">88. La manera en que te vestís y tu estilo único.</li>
+        <li class="note">89. Que seas mi dupla perfecta para maratonear peliculas.</li>
+        <li class="note">90. Lo tierno que es cuando me pedís un abrazo.</li>
+        <li class="note">91. Que a tu lado el tiempo pase volando pero a la vez rinda un montón.</li>
+        <li class="note">92. Tu olor, que ya es mi aroma favorito en el mundo.</li>
+        <li class="note">93. Que me elijas cada día frente a cualquier otra opción.</li>
+        <li class="note">94. Lo dulce que sos cuando me pedís perdón por una pavada.</li>
+        <li class="note">95. Que me incluyas en los planes familiares</li>
+        <li class="note">96. Que siempre tengas un consejo listo para darme.</li>
+        <li class="note">97. Lo mucho que me gusta verte lograr lo que te proponés.</li>
+        <li class="note">98. La forma en la que apoyás tu cabeza en mi hombro.</li>
+        <li class="note">99. Que cada canción de amor me haga acordar a vos.</li>
+        <li class="note">100. Haber cumplido nuestros primeros 100 días, y sentir que fue apenas ayer.</li>
+        <li class="note">101. Que seas mi cable a tierra.</li>
+        <li class="note">102. La forma en que me besás cuando nos reencontramos.</li>
+        <li class="note">103. Que tengas esa capacidad hermosa de perdonar y avanzar juntos.</li>
+        <li class="note">104. Lo bien que nos entendemos, incluso cuando no estamos de acuerdo.</li>
+        <li class="note">105. Tus ideas locas y divertidas para salir de la rutina.</li>
+        <li class="note">106. Que me enseñes a amar de una manera más sana y linda.</li>
+        <li class="note">107. Lo mucho que valoro tus abrazos curativos.</li>
+        <li class="note">108. Cómo se siente agarrar tu mano por la calle.</li>
+        <li class="note">109. Que siempre encuentres la manera de hacerme sentir especial.</li>
+        <li class="note">110. Que seas vos la dueña de todos mis "te pienso".</li>
+        <li class="note">111. La carita de concentración que ponés cuando estás leyendo algo.</li>
+        <li class="note">112. Que me banques con mis locuras de los jueguitos y partidos de fútbol.</li>
+        <li class="note">113. El brillito en tus ojos cuando te hago una sorpresa.</li>
+        <li class="note">114. Que siempre estás dispuesta a acompañarme a donde sea.</li>
+        <li class="note">115. Lo mucho que me encanta ver películas de terror y abrazarte si te asustás.</li>
+        <li class="note">116. Tus ganas de progresar y aprender cosas nuevas.</li>
+        <li class="note">117. Cómo tu risa es literalmente mi música favorita.</li>
+        <li class="note">118. Que no importe el lugar, si estoy con vos, la paso bien.</li>
+        <li class="note">119. La seguridad que me transmite nuestro vínculo.</li>
+        <li class="note">120. Que sepas exactamente cuándo necesito estar solo y cuándo necesito que estés ahí.</li>
+        <li class="note">121. La manera en que compartimos silencios sin que sean incómodos.</li>
+        <li class="note">122. Que tus besos siempre me dejen con ganas de más.</li>
+        <li class="note">123. Cómo hacés que los lunes no sean tan lunes.</li>
+        <li class="note">124. Tus respuestas rápidas a los mensajes cuando estás libre.</li>
+        <li class="note">125. Que valores el esfuerzo que pongo en la relación.</li>
+        <li class="note">126. Lo bien que se siente tener tremenda mujer a mi lado.</li>
+        <li class="note">127. Cómo me impulsás a cumplir cada una de mis metas.</li>
+        <li class="note">128. Que te rías de mis anécdotas, por más tontas que sean.</li>
+        <li class="note">129. Tu empatía y la bondad con la que tratás a todos.</li>
+        <li class="note">130. Que seas el último pensamiento que tengo antes de dormirme.</li>
+        <li class="note">131. Que seas también lo primero en lo que pienso al despertarme.</li>
+        <li class="note">132. Cómo nos entendemos en la cama y la conexión que tenemos.</li>
+        <li class="note">133. Que me permitas cuidar de vos y protegerte.</li>
+        <li class="note">134. La naturalidad con la que nos complementamos.</li>
+        <li class="note">135. Que cada foto con vos sea mi nueva favorita.</li>
+        <li class="note">136. Tu forma de decirme que me veo bien, que me sube la autoestima.</li>
+        <li class="note">137. Cómo me enseñaste que el amor no es complicado, es lindo.</li>
+        <li class="note">138. Que siempre que nos vemos me vuelvo a enamorar.</li>
+        <li class="note">139. La intensidad y la pasión que le ponés a lo nuestro.</li>
+        <li class="note">140. Que compartamos los mismos valores y formas de ver la vida.</li>
+        <li class="note">141. La paz que me trasmiten tus palabras.</li>
+        <li class="note">142. Que conozcas todas mis versiones y ames a cada una de ellas.</li>
+        <li class="note">143. Tu voz cuando estás mimosa y buscás cariño.</li>
+        <li class="note">144. Que seas la pieza que le faltaba a mi rompecabezas.</li>
+        <li class="note">145. La libertad con la que podemos ser un papelón juntos.</li>
+        <li class="note">146. Que me des el valor para enfrentar mis miedos.</li>
+        <li class="note">147. Lo lindo que es cocinar juntos o intentarlo sin quemar nada.</li>
+        <li class="note">148. Que cada día encuentro algo nuevo que me gusta de vos.</li>
+        <li class="note">149. Cómo te me quedás mirando y sonreís de la nada.</li>
+        <li class="note">150. Que seas el "para siempre" que siempre quise.</li>
+        <li class="note">151. Tus berrinches graciosos cuando perdés en algún juego.</li>
+        <li class="note">152. Lo suave que es tu piel y lo mucho que me gusta acariciarte.</li>
+        <li class="note">153. Que seas la persona que quiero ver después de un día pésimo.</li>
+        <li class="note">154. Cómo te acordás de fechas y cosas importantes que a mí se me pasan.</li>
+        <li class="note">155. La forma en que caminás hacia mí cuando nos vemos a lo lejos.</li>
+        <li class="note">156. Que tengamos nuestros propios chistes internos que nadie más entiende.</li>
+        <li class="note">157. Lo mucho que me encanta perderme en tu mirada.</li>
+        <li class="note">158. Que me des paz en un mundo lleno de caos.</li>
+        <li class="note">159. La manera en que me hacés cosquillas para hacerme enojar en joda.</li>
+        <li class="note">160. Que seas mi mayor motivación para levantarme todos los días.</li>
+        <li class="note">161. Tus mensajitos de buenas noches que me hacen dormir con una sonrisa.</li>
+        <li class="note">162. Que me elijas hoy, mañana y estoy seguro que siempre.</li>
+        <li class="note">163. Lo bien que la pasamos tomando unos mates a la tarde.</li>
+        <li class="note">164. Cómo me haces extrañarte apenas te vas.</li>
+        <li class="note">165. Que nuestros planes improvisados siempre terminan siendo los mejores.</li>
+        <li class="note">166. La forma en que me tocás el pelo y me relajás por completo.</li>
+        <li class="note">167. Que siempre me impulsás a no rendirme y motivare.</li>
+        <li class="note">168. La forma en la que entrelazás tus piernas con las mías.</li>
+        <li class="note">169. Que con solo una mirada ya sepas lo que estoy pensando.</li>
+        <li class="note">170. El calorcito de tu cuerpo cuando nos abrazamos en invierno.</li>
+        <li class="note">171. Que hacés que mi lado más romántico salga a la luz.</li>
+        <li class="note">172. Lo hermoso que es ver cómo crecemos juntos con el tiempo.</li>
+        <li class="note">173. Que siempre priorices nuestra relación y la cuides tanto como yo.</li>
+        <li class="note">174. Cómo me derretís cuando me llamás por apodos tiernos.</li>
+        <li class="note">175. Que estés dispuesta a construir, a reparar y a seguir eligiéndonos.</li>
+        <li class="note">176. La magia de sentir que te conozco de otra vida.</li>
+        <li class="note">177. Que seas mi compañera, mi equipo y mi mitad.</li>
+        <li class="note">178. Lo increíble que es sentir que por fin encontré a la persona correcta.</li>
+        <li class="note">179. Que hagas que la vida se sienta como una aventura compartida.</li>
+        <li class="note">180. Saber que, pase lo que pase, somos nosotros dos contra el mundo.</li>
+        <li class="note">181. Por todo esto y por los infinitos días que nos quedan por sumar juntos.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ---------- CAPÍTULO 5: LÍNEA DE TIEMPO ---------- -->
+  <section id="cap5" class="page page-chapter">
+    <div class="page-inner">
+      <span class="chapter-number">Capítulo 05</span>
+      <h2 class="page-title">Nuestros recuerdos favoritos</h2>
+      <p class="page-text intro-paragraph">
+        Las fechas que marcaron estos seis meses. Tocá cada una para ver la foto y el recuerdo.
+      </p>
+
+      
+      <div class="timeline">
+        <div class="timeline-item reveal" data-img="assets/images/img33.jpeg">
+          <div class="timeline-date">23 ago 2025</div>
+          <div class="timeline-content">
+            <h3>Nuestra primera cita</h3>
+            <p>El día que nos vimos en ese bar comimos una hamburguesita y hablamos por horas.</p>
+          </div>
+        </div>
+        <div class="timeline-item reveal" data-img="assets/images/img32.jpeg">
+          <div class="timeline-date">18 dic 2025</div>
+          <div class="timeline-content">
+            <h3>Propuesta de ser Novios</h3>
+            <p>El dia mas lindo y que mas nervioso estuve con vos</p>
+          </div>
+        </div>
+        <div class="timeline-item reveal" data-img="assets/images/img16.jpeg">
+          <div class="timeline-date">14 feb 2026</div>
+          <div class="timeline-content">
+            <h3>Nuestro primer San Valentín</h3>
+            <p>El primero de muchos, fuimos a puerto madero con una noche hermosa.</p>
+          </div>
+        </div>
+        <div class="timeline-item reveal" data-img="assets/images/img23.jpeg">
+          <div class="timeline-date">18 mar 2026</div>
+          <div class="timeline-content">
+            <h3>Tres meses juntos</h3>
+            <p>Lo celebramos a nuestra manera, simple pero con mucho amor.</p>
+          </div>
+        </div>
+        <div class="timeline-item reveal" data-img="assets/images/img18.jpeg">
+          <div class="timeline-date">18 jun 2026</div>
+          <div class="timeline-content">
+            <h3>Seis meses</h3>
+            <p>Y acá estamos, celebrando medio año juntos con esta pequeña carta digital.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- CAPÍTULO 6: LO QUE VIENE ---------- -->
+  <section id="cap6" class="page page-chapter alt">
+    <div class="page-inner centered">
+      <span class="chapter-number">Capítulo 06</span>
+      <h2 class="page-title">Lo que viene</h2>
+      <p class="page-text big-text">
+        No sé qué nos va a deparar el tiempo, pero sí sé que quiero seguir descubriéndolo con vos.
+        Quiero más charlas hasta tarde, más viajes, más risas, más días comunes que se vuelven especiales
+        solo porque estás vos.
+      </p>
+      <p class="page-text big-text">
+        Esto recién empieza, y no podría imaginar mejor compañera para todo lo que falta.
+      </p>
+    </div>
+  </section>
+
+  <!-- ---------- FINAL ---------- -->
+  <section id="final" class="page page-final">
+    <div class="page-inner centered">
+      <div class="final-heart">❤️</div>
+      <h2 class="final-title">Gracias por estos 6 meses</h2>
+      <p class="final-text">Esto es solo el comienzo de nuestra historia.</p>
+      <button id="restartBtn" class="btn-primary">Volver a recorrer el álbum</button>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===================================================== -->
+<!-- LIGHTBOX PARA AMPLIAR IMÁGENES -->
+<!-- ===================================================== -->
+<div id="lightbox" class="lightbox">
+  <button id="lightboxClose" class="lightbox-close" aria-label="Cerrar">&times;</button>
+  <img id="lightboxImg" src="" alt="">
+  <p id="lightboxCaption" class="lightbox-caption"></p>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>
